@@ -5,13 +5,16 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 
 import { ContactsProvider } from './context/ContactsContext'
+import { AuthProvider } from './context/AuthContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <ContactsProvider>
-      <App />
-    </ContactsProvider>
+    <AuthProvider>
+      <ContactsProvider>
+        <App />
+      </ContactsProvider>
+    </AuthProvider>
   </React.StrictMode>
 )
 
