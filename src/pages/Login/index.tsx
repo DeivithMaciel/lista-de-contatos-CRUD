@@ -3,7 +3,7 @@ import { useAuth } from '../../context/AuthContext'
 import { useState } from 'react'
 
 export const Login = () => {
-  const { login } = useAuth()
+  const { login, loading, error } = useAuth()
   const Navigate = useNavigate()
 
   const [email, setEmail] = useState('')
@@ -31,7 +31,10 @@ export const Login = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button type="submit">Entrar</button>
+      <button type="submit" disabled={loading}>
+        {loading ? 'Carregando...' : 'Entrar'}
+      </button>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </form>
   )
 }

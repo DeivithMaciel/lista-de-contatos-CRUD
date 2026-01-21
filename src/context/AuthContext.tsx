@@ -8,12 +8,17 @@ type AuthContextType = {
   user: User | null
   login: (email: string, password: string) => void
   logout: () => void
+  loading: boolean
+  error: string
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType)
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null)
+
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user')
@@ -22,13 +27,22 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [])
 
-  const login = (email: string, password: string) => {
-    if (!email || !password) return
+  const login = (email: string) => {
+    setLoading(true)
+    setError('')
 
-    const fakeUser = { email }
+    setTimeout(() => {
+      if (!email.includes('@')) {
+        setError('Email inválido')
+        setLoading(false)
+        return
+      }
+      const fakeUser = { email }
 
-    localStorage.setItem('user', JSON.stringify(fakeUser))
-    setUser(fakeUser)
+      setUser(fakeUser)
+      localStorage.setItem('user', JSON.stringify(email))
+      setLoading(false)
+    }, 1000)
   }
 
   const logout = () => {
@@ -37,7 +51,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, loading, error }}>
       {children}
     </AuthContext.Provider>
   )
