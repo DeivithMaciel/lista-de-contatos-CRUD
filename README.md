@@ -1,46 +1,104 @@
-# Getting Started with Create React App
+     Lista de Contatos CRUD - React + Typescript
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  Projeto MVP de uma lista de contatos com CRUD, desenvolvimento em React com Typescript,
+utiliza um Context API e um Back-End REST (json-server) hospedado online no Render.
+O projeto simula um sistema real de cadastro de contatos e manipulação dos próprios,
+tendo persistência de dados, feedback visual e deploy em produção.
 
-## Available Scripts
 
-In the project directory, you can run:
+    @ Demonstrações online
 
-### `npm start`
+  Front-End(Vercel): https://lista-de-contatos-crud-rust.vercel.app
+  Back-End(Render): https://json-server-listadecontatoscrud.onrender.com/contacts
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    @ Rodar o projeto localmente
 
-### `npm test`
+  git clone https://github.com/DeivithMaciel/lista-de-contatos-CRUD.git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  npm install
 
-### `npm run build`
+  npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  npm run server (opcional para rodar localmente)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    @ Funções do Projeto
 
-### `npm run eject`
+  Criar contatos, remove-los e edita-los(Nome e Email).
+  Marcar e desmarcar como favoritos(favoritos tem prioridade no topo).
+  Dados conectados á uma BackEnd(não os perde com F5).
+  Durante Loadings(carregamento), feedbacks são emitidos.
+  Exibe mensagens de sucesso/erro.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    @Tecnologias utilizadas
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  *Front-End
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    ° React 18
 
-## Learn More
+    ° Typescript
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    ° Context API
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    ° Styled-components
+
+    ° Fetch API
+
+    ° Vercel
+
+  *BackEnd
+
+    ° json-server
+
+    ° Render
+
+
+    @ Estrutura do projeto
+
+  src/
+    components/
+      Header
+      ContactCard
+      ContactForm
+    Context/
+      ContactsContext.tsx
+    Pages/
+      Home
+    Types/
+      Contact.ts
+    Styles/
+
+  Cada component e page tem um index.tsx e um style.ts.
+
+
+    @ A arquitetura do fluxo de dados
+
+    *O Context centraliza:
+
+      ° lista de contatos
+
+      ° estado do loading
+
+      °mensagens de feedback
+
+      ° funções do CRUD(editar e etc)
+
+    Os componentes consomem o contexto via useContacts()
+
+    Todas as operações de criação, edição, remoção e favoritos chamam o API REST e
+  atualizam o estado global.
+
+
+    AUTOR
+
+  Desenvolvido por: Deivith Maciel
+  Engenheiro Front-end formado pela EBAC.
+
+
+    Observações
+
+  Projeto desenvolvido com foco aprendizado para simular um ambiente real de atuação,
+com frontend integrado com backend.
+  Facil adaptamento para consumir um API real em Node, Nest e outros backends.
