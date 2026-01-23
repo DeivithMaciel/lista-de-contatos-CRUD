@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Toast from './components/Toast'
 import Home from './pages/Home'
 
 import { GlobalStyle } from './styles/GlobalStyles'
@@ -19,7 +18,6 @@ const App = () => {
               <PrivateRoute>
                 <>
                   <Home />
-                  <Toast />
                 </>
               </PrivateRoute>
             }

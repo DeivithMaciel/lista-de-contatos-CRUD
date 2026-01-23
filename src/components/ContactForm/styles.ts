@@ -1,9 +1,15 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../styles/GlobalStyles'
 
 export const Form = styled.form`
   display: flex;
   gap: 8px;
   margin-bottom: 24px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+    align-items: center;
+  }
 
   input {
     padding: 8px;

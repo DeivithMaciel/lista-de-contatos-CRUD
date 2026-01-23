@@ -4,14 +4,23 @@ export const Error = styled.p`
   color: red;
   font-size: 24px;
   margin-top: 16px;
+  text-align: center;
 `
 
 export const Page = styled.div`
+  min-height: 100vh;
+  width: 100%;
+  background-color: #bdc3c7;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  background-color: #bdc3c7;
-  min-height: 100vh;
+  align-items: center;
+
+  h2 {
+    padding-top: 32px;
+    text-align: center;
+    color: #fff;
+    font-size: 36px;
+  }
 `
 
 export const FormLogin = styled.form`
@@ -20,15 +29,9 @@ export const FormLogin = styled.form`
   align-items: center;
   padding: 16px;
   border-radius: 16px;
-  margin-top: 128px;
   background-color: #2f80ed;
   width: 100%;
   max-width: 480px;
-
-  h2 {
-    color: #fff;
-    font-size: 36px;
-  }
 
   input {
     margin-top: 16px;

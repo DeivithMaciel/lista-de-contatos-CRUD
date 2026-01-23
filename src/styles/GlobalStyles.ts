@@ -1,5 +1,10 @@
 import { createGlobalStyle } from 'styled-components'
 
+export const breakpoints = {
+  mobile: '576px',
+  tablet: '768px'
+}
+
 export const GlobalStyle = createGlobalStyle`
   *{
   margin: 0;

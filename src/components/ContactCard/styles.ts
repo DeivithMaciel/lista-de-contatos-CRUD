@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../styles/GlobalStyles'
 
 export const Card = styled.div`
   background-color: #fff;
@@ -7,12 +8,22 @@ export const Card = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px 0;
+  }
 `
 
 export const Info = styled.section`
   display: flex;
   flex-direction: column;
   gap: 4px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-bottom: 8px;
+  }
 `
 
 export const Actions = styled.section`

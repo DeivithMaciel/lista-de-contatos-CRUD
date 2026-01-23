@@ -3,6 +3,7 @@ import { useContacts } from '../../context/ContactsContext'
 import Header from '../../components/Header'
 import ContactCard from '../../components/ContactCard'
 import ContactForm from '../../components/ContactForm'
+import { Toast } from '../../components/Toast'
 
 import * as S from './styles'
 
@@ -16,6 +17,7 @@ const Home = () => {
   return (
     <>
       <Header />
+      <Toast />
       {loading ? (
         <S.LoadingMessage>Está carregando....</S.LoadingMessage>
       ) : (

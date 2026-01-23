@@ -26,6 +26,7 @@ export const Login = () => {
   return (
     <S.Page>
       <S.FormLogin onSubmit={handleSubmit}>
+        <h2>Lista de contatos</h2>
         <h2>Login</h2>
         <input
           type="email"
