@@ -1,9 +1,12 @@
 import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+
 import { useAuth } from '../../context/AuthContext'
-import { useState } from 'react'
+
+import { Error } from './styles'
 
 export const Login = () => {
-  const { login, loading, error } = useAuth()
+  const { login, loading, error, user } = useAuth()
   const Navigate = useNavigate()
 
   const [email, setEmail] = useState('')
@@ -12,8 +15,13 @@ export const Login = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     login(email, password)
-    Navigate('/')
   }
+
+  useEffect(() => {
+    if (user) {
+      Navigate('/')
+    }
+  }, [user, Navigate])
 
   return (
     <form onSubmit={handleSubmit}>
@@ -26,7 +34,7 @@ export const Login = () => {
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
-        type="string"
+        type="password"
         placeholder="Senha"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
@@ -34,7 +42,7 @@ export const Login = () => {
       <button type="submit" disabled={loading}>
         {loading ? 'Carregando...' : 'Entrar'}
       </button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <Error className="error">{error}</Error>}
     </form>
   )
 }

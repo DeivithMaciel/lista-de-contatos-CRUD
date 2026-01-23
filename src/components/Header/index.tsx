@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom'
+
 import { useAuth } from '../../context/AuthContext'
+
 import * as S from './styles'
 
 const Header = () => {
@@ -21,13 +23,13 @@ const Header = () => {
   return (
     <S.Container>
       <S.Title>Lista de contatos</S.Title>
-
-      <div className="avatar">
-        <strong>{initial}</strong>
-        <span>{shortEmail}</span>
-      </div>
-
-      <button onClick={handleLogout}>Sair</button>
+      <S.InfoUser>
+        <div className="avatar">
+          <strong>{initial}</strong>
+          <span>{shortEmail}</span>
+        </div>
+        <button onClick={handleLogout}>Sair</button>
+      </S.InfoUser>
     </S.Container>
   )
 }

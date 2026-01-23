@@ -27,20 +27,28 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [])
 
-  const login = (email: string) => {
+  const login = (email: string, password: string) => {
     setLoading(true)
     setError('')
 
     setTimeout(() => {
+      if (!email || !password) {
+        setError('Preencha todos os campos')
+        setLoading(false)
+        return
+      }
+
       if (!email.includes('@')) {
         setError('Email inválido')
         setLoading(false)
         return
       }
+
       const fakeUser = { email }
 
       setUser(fakeUser)
-      localStorage.setItem('user', JSON.stringify(email))
+      localStorage.setItem('user', JSON.stringify(fakeUser))
+      setUser(fakeUser)
       setLoading(false)
     }, 1000)
   }
