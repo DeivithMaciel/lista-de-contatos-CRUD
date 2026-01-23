@@ -18,6 +18,12 @@ export const InfoUser = styled.section`
   align-items: center;
   padding-right: 360px;
 
+  .avatar {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   button {
     font-size: 16px;
     border-radius: 8px;

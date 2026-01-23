@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import { useAuth } from '../../context/AuthContext'
 
-import { Error } from './styles'
+import * as S from './styles'
 
 export const Login = () => {
   const { login, loading, error, user } = useAuth()
@@ -24,25 +24,26 @@ export const Login = () => {
   }, [user, Navigate])
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-
-      <input
-        type="email"
-        placeholder="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Senha"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit" disabled={loading}>
-        {loading ? 'Carregando...' : 'Entrar'}
-      </button>
-      {error && <Error className="error">{error}</Error>}
-    </form>
+    <S.Page>
+      <S.FormLogin onSubmit={handleSubmit}>
+        <h2>Login</h2>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? 'Carregando...' : 'Entrar'}
+        </button>
+        {error && <S.Error className="error">{error}</S.Error>}
+      </S.FormLogin>
+    </S.Page>
   )
 }
