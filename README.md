@@ -26,10 +26,26 @@ tendo persistência de dados, feedback visual e deploy em produção.
     @ Funções do Projeto
 
   Criar contatos, remove-los e edita-los(Nome e Email).
+
   Marcar e desmarcar como favoritos(favoritos tem prioridade no topo).
+
   Dados conectados á uma BackEnd(não os perde com F5).
+
   Durante Loadings(carregamento), feedbacks são emitidos.
+
   Exibe mensagens de sucesso/erro.
+
+  Login com autentificação fake.
+
+  Redirecionamento automático para usuários logados.
+
+  Logout.
+
+  Toast para Feedbacks visuais.
+
+  Layout responsivo(desktop, tablet e mobile).
+
+  Estados de loading e erro.
 
 
     @Tecnologias utilizadas
@@ -48,6 +64,8 @@ tendo persistência de dados, feedback visual e deploy em produção.
 
     ° Vercel
 
+    ° React Router Dom
+
   *BackEnd
 
     ° json-server
@@ -62,34 +80,49 @@ tendo persistência de dados, feedback visual e deploy em produção.
       Header
       ContactCard
       ContactForm
+      Toast
     Context/
-      ContactsContext.tsx
+      ContactsContext
+      AuthContext
     Pages/
       Home
+      Login
     Types/
       Contact.ts
+    Routes/
+      PrivateRoutes.tsx
     Styles/
+      GlobalStyles.ts
+    App.tsx
+    index.tsx
 
-  Cada component e page tem um index.tsx e um style.ts.
+  Cada component, context e page tem um index.tsx e um style.ts.
 
 
     @ A arquitetura do fluxo de dados
 
     *O Context centraliza:
 
-      ° lista de contatos
+      ° lista de contatos.
 
-      ° estado do loading
+      ° estado do loading.
 
-      °mensagens de feedback
+      ° mensagens de feedback(incluindo o Toast).
 
-      ° funções do CRUD(editar e etc)
+      ° funções do CRUD(editar e etc).
 
-    Os componentes consomem o contexto via useContacts()
+      ° Login/Logout.
 
-    Todas as operações de criação, edição, remoção e favoritos chamam o API REST e
-  atualizam o estado global.
+      ° Dados do usuário.
 
+      ° Navegação de páginas(Navegate).
+
+    Os componentes e páginas consomem os contexts via useContacts() e useAuth().
+
+    Todas as operações de criação, edição, remoção e favoritos, chamam o API REST e
+  atualizam o estado global com useContacts().
+
+    Dados do usuário, Login e logout são por localStorage via useAuth().+
 
     AUTOR
 
@@ -102,3 +135,4 @@ tendo persistência de dados, feedback visual e deploy em produção.
   Projeto desenvolvido com foco aprendizado para simular um ambiente real de atuação,
 com frontend integrado com backend.
   Facil adaptamento para consumir um API real em Node, Nest e outros backends.
+  Simulação de usuário com autentificação.
